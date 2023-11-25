@@ -6,11 +6,11 @@ using MediatR;
 
 namespace Application.Submitions.Queries
 {
-    public class GetSubmitionsByDateQuery : IRequest<List<SubmitionDto>>
+    public class GetSubmissionsByDateQuery : IRequest<List<SubmissionDto>>
     {
         public DateTime FromDate { get; set; }
         public DateTime ToDate { get; set; }
-        public GetSubmitionsByDateQuery(DateTime? fromDate = null, DateTime? toDate = null)
+        public GetSubmissionsByDateQuery(DateTime? fromDate = null, DateTime? toDate = null)
         {
             if (fromDate != null)
                 FromDate = fromDate.Value;
@@ -23,7 +23,7 @@ namespace Application.Submitions.Queries
                 ToDate = DateTime.MaxValue;
         }
 
-        public class GetSubmitionsByDateQueryHandler : IRequestHandler<GetSubmitionsByDateQuery, List<SubmitionDto>>
+        public class GetSubmitionsByDateQueryHandler : IRequestHandler<GetSubmissionsByDateQuery, List<SubmissionDto>>
         {
             private readonly ISubmissionsRepository _repository;
             private readonly IMapper _mapper;
@@ -32,13 +32,13 @@ namespace Application.Submitions.Queries
                 _repository = repository;
                 _mapper = mapper;
             }
-            public async Task<List<SubmitionDto>> Handle(GetSubmitionsByDateQuery request, CancellationToken cancellationToken)
+            public async Task<List<SubmissionDto>> Handle(GetSubmissionsByDateQuery request, CancellationToken cancellationToken)
             {
                 List<Submission> submitions = await _repository.GetSubmissionsByDate(request.FromDate, request.ToDate);
-                List<SubmitionDto> submitionDtos = new List<SubmitionDto>();
+                List<SubmissionDto> submitionDtos = new List<SubmissionDto>();
 
                 foreach (Submission submition in submitions)
-                    submitionDtos.Add(_mapper.Map<SubmitionDto>(submition));
+                    submitionDtos.Add(_mapper.Map<SubmissionDto>(submition));
 
                 return submitionDtos;
             }

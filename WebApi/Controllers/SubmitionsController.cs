@@ -34,18 +34,18 @@ namespace WebApi.Controllers
         }
 
         [HttpGet("{submitionId}", Name = "GetSubmitionById")]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SubmitionDto))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SubmissionDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<SubmitionDto>> GetById([Required] int submitionId)
+        public async Task<ActionResult<SubmissionDto>> GetById([Required] int submitionId)
         {
-            return await Mediator.Send(new GetSubmitionQuery(submitionId));
+            return await Mediator.Send(new GetSubmissionQuery(submitionId));
         }
 
         [HttpGet(Name ="GetSubmissionsByDate")]
-        public async Task<ActionResult<List<SubmitionDto>>> GetByDate(DateTime fromDate, DateTime untilDate)
+        public async Task<ActionResult<List<SubmissionDto>>> GetByDate(DateTime fromDate, DateTime untilDate)
         {
-            return await Mediator.Send(new GetSubmitionsByDateQuery(fromDate, untilDate));
+            return await Mediator.Send(new GetSubmissionsByDateQuery(fromDate, untilDate));
         }
     }
 }

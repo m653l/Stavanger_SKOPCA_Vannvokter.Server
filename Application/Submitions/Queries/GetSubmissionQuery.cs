@@ -6,17 +6,17 @@ using MediatR;
 
 namespace Application.Submitions.Queries
 {
-    public class GetSubmitionQuery : IRequest<SubmitionDto>
+    public class GetSubmissionQuery : IRequest<SubmissionDto>
     {
         public int Id { get; set; }
 
-        public GetSubmitionQuery(int id) 
+        public GetSubmissionQuery(int id) 
         {
             Id = id;
         }
     }
 
-    public class GetSubmitionQueryHandler : IRequestHandler<GetSubmitionQuery, SubmitionDto>
+    public class GetSubmitionQueryHandler : IRequestHandler<GetSubmissionQuery, SubmissionDto>
     {
         private readonly ISubmissionsRepository _repository;
         private readonly IMapper _mapper;
@@ -27,12 +27,12 @@ namespace Application.Submitions.Queries
             _mapper = mapper;
         }
 
-        public async Task<SubmitionDto> Handle(GetSubmitionQuery request, CancellationToken cancellationToken)
+        public async Task<SubmissionDto> Handle(GetSubmissionQuery request, CancellationToken cancellationToken)
         {
             Submission submission = await _repository.GetSubmissionById(request.Id);
-            SubmitionDto submitionDto = _mapper.Map<SubmitionDto>(submission);
+            SubmissionDto submissionDto = _mapper.Map<SubmissionDto>(submission);
 
-            return submitionDto;
+            return submissionDto;
         }
     }
 }

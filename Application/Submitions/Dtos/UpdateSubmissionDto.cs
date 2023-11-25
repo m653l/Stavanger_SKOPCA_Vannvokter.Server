@@ -3,14 +3,14 @@ using Domain.Aggregates;
 
 namespace Application.Submitions.Dtos
 {
-    public class UpdateSubmitionDto : SubmitionDto
+    public class UpdateSubmissionDto : SubmissionDto
     {
         public int Id { get; set; }
 
         public new static void Mapping(Profile profile)
         {
-            profile.CreateMap<Submission, UpdateSubmitionDto>()
-                .IncludeBase<Submission, SubmitionDto>()
+            profile.CreateMap<Submission, UpdateSubmissionDto>()
+                .IncludeBase<Submission, SubmissionDto>()
                 .ReverseMap();
         }
     }

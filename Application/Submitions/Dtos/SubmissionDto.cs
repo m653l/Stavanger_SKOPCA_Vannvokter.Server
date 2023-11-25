@@ -5,7 +5,7 @@ using Domain.Enums;
 
 namespace Application.Submitions.Dtos
 {
-    public class SubmitionDto : IMapFrom<Submission>, IMapTo<Submission>
+    public class SubmissionDto : IMapFrom<Submission>, IMapTo<Submission>
     {
         public DateTime SubmitionDate { get; set; } = DateTime.UtcNow;
         public DateTime LastModifiedDate { get; set; } = DateTime.UtcNow;
