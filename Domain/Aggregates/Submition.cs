@@ -15,9 +15,6 @@ namespace Domain.Aggregates
         public string Comments {  get; set; } = string.Empty;
 
         public SubmitionType SubmitionType { get; set; }
-        public SubmitionStatus SubmitionStatus { get; set; }
-
-
         public int ProducerId { get; set; }
         public Producer Producer { get; set; } = null!;
     }

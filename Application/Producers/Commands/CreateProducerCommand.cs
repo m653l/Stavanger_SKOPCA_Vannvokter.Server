@@ -26,13 +26,9 @@ namespace Application.Producers.Commands
             Producer entity = _mapper.Map<Producer>(request.Producer);
 
             if (entity.Id == default) 
-            {
                 await _repository.Create(entity);
-            }
             else
-            {
                 await _repository.Update(entity);
-            }    
 
             return entity.Id;
         }

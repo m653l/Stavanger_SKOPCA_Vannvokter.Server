@@ -15,5 +15,10 @@ namespace Infrastructure.Database.Repositories
         {
             return await _dataContext.Submition.Include(e => e.Producer).FirstOrDefaultAsync(e => e.Id == id) ?? throw new Exception();
         }
+
+        public async Task<List<Submition>> GetSubmitionsByDate()
+        {
+            _dataContext.Submition.Where(c => c. );
+        }
     }
 }

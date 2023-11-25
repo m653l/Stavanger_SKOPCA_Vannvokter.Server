@@ -5,5 +5,6 @@ namespace Application.Submitions.Dtos
 {
     public class FieldAddressDto : IMapFrom<FieldAddress>, IMapTo<FieldAddress>
     {
+
     }
 }
