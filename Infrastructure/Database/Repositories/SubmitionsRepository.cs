@@ -18,7 +18,8 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<List<Submition>> GetSubmitionsByDate()
         {
-            _dataContext.Submition.Where(c => c. );
+            //_dataContext.Submition.Where(c => c. );
+            throw new NotImplementedException();
         }
     }
 }

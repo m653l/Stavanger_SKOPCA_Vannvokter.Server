@@ -45,7 +45,8 @@ namespace WebApi.Controllers
         [HttpGet(Name ="GetSubmitionByDate")]
         public async Task<ActionResult<List<SubmitionDto>>> GetByDate(DateTime fromDate, DateTime untilDate)
         {
-            return await Mediator.Send(new GetSubmitionsByDateQuery(fromDate, untilDate));
+            //return await Mediator.Send(new GetSubmitionsByDateQuery(fromDate, untilDate));
+            throw new NotImplementedException();
         }
     }
 }
