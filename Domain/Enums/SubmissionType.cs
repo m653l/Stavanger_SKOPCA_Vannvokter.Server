@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums
 {
-    public enum SubmitionType
+    public enum SubmissionType
     {
         Fertilization,
         Harvest,

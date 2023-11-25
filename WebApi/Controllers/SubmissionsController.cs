@@ -1,7 +1,7 @@
 ﻿using Application.Producers.Commands;
-using Application.Submitions.Commands;
-using Application.Submitions.Dtos;
-using Application.Submitions.Queries;
+using Application.Submissions.Commands;
+using Application.Submissions.Dtos;
+using Application.Submissions.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -10,21 +10,21 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    public class SubmitionsController : ControllerBase
+    public class SubmissionsController : ControllerBase
     {
         private ISender _mediator = null!;
         protected ISender Mediator => _mediator ??= HttpContext.RequestServices.GetRequiredService<ISender>();
 
-        [HttpPost(Name = "CreateSubmition")]
+        [HttpPost(Name = "CreateSubmission")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<int>> Create([FromBody] CreateSubmitionCommand command)
+        public async Task<ActionResult<int>> Create([FromBody] CreateSubmissionCommand command)
         {
             return await Mediator.Send(command);
         }
 
-        [HttpPut(Name = "UpdateSubmition")]
+        [HttpPut(Name = "UpdateSubmission")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -33,13 +33,13 @@ namespace WebApi.Controllers
             return await Mediator.Send(command);
         }
 
-        [HttpGet("{submitionId}", Name = "GetSubmitionById")]
+        [HttpGet("{SubmissionId}", Name = "GetSubmissionById")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(SubmissionDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<SubmissionDto>> GetById([Required] int submitionId)
+        public async Task<ActionResult<SubmissionDto>> GetById([Required] int SubmissionId)
         {
-            return await Mediator.Send(new GetSubmissionQuery(submitionId));
+            return await Mediator.Send(new GetSubmissionQuery(SubmissionId));
         }
 
         [HttpGet(Name ="GetSubmissionsByDate")]
