@@ -5,25 +5,24 @@
 namespace Infrastructure.Database.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class Fix : Migration
+    public partial class FixesProdecerLastName : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Name",
-                table: "Tests",
-                type: "TEXT",
-                nullable: false,
-                defaultValue: "");
+            migrationBuilder.RenameColumn(
+                name: "LasName",
+                table: "Producers",
+                newName: "LastName");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "Name",
-                table: "Tests");
+            migrationBuilder.RenameColumn(
+                name: "LastName",
+                table: "Producers",
+                newName: "LasName");
         }
     }
 }

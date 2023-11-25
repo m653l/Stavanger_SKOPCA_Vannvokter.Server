@@ -5,15 +5,13 @@ namespace Infrastructure.Database.Data
 {
     public class DataContext : DbContext
     {
-        public DbSet<Test> Tests { get; set; }
+        public DbSet<Producer> Producers { get; set; }
 
         public DataContext(DbContextOptions options) : base(options) 
         { }
 
         public DataContext()
-        {
-            
-        }
+        { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

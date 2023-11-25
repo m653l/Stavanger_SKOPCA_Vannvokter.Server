@@ -3,7 +3,6 @@ using Domain.Aggregates;
 using Infrastructure.Database.Data;
 using Infrastructure.Database.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Infrastructure
@@ -23,7 +22,7 @@ namespace Infrastructure
                 dbContext.Database.Migrate();
             }
 
-            services.AddTransient<IGenericRepository<Test>, GenericRepository<Test>>();
+            services.AddTransient<IGenericRepository<Producer>, GenericRepository<Producer>>();
 
             return services;
         }

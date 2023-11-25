@@ -1,7 +1,6 @@
 using Application;
 using Infrastructure;
-using Presentation;
-using Serilog;
+using Serilog;  // TODO: Configure Serilog
 
 namespace WebApi
 {
@@ -21,8 +20,7 @@ namespace WebApi
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddApplication()
-                .AddInfrastructure()
-                .AddPresentation();
+                .AddInfrastructure();
 
             var app = builder.Build();
 
