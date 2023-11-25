@@ -17,6 +17,12 @@ namespace Infrastructure
                 options.UseSqlite(@"Data Source=.\\VannvokterDB.db;");
             });
 
+            using (var serviceProvider = services.BuildServiceProvider())
+            {
+                var dbContext = serviceProvider.GetService<DataContext>();
+                dbContext.Database.Migrate();
+            }
+
             services.AddTransient<IGenericRepository<Test>, GenericRepository<Test>>();
 
             return services;
