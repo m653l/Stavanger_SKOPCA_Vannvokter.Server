@@ -43,7 +43,7 @@ namespace Infrastructure.Database.Data.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("Domain.Aggregates.Submition", b =>
+            modelBuilder.Entity("Domain.Aggregates.Submission", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -65,17 +65,17 @@ namespace Infrastructure.Database.Data.Migrations
                     b.Property<double>("Quantity")
                         .HasColumnType("REAL");
 
-                    b.Property<DateTime>("SubmitionDate")
+                    b.Property<DateTime>("SubmissionDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("SubmitionType")
+                    b.Property<int>("SubmissionType")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProducerId");
 
-                    b.ToTable("Submition");
+                    b.ToTable("Submissions");
                 });
 
             modelBuilder.Entity("Domain.Aggregates.Producer", b =>
@@ -109,17 +109,17 @@ namespace Infrastructure.Database.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Domain.Aggregates.Submition", b =>
+            modelBuilder.Entity("Domain.Aggregates.Submission", b =>
                 {
                     b.HasOne("Domain.Aggregates.Producer", "Producer")
-                        .WithMany("Submitions")
+                        .WithMany("Submissions")
                         .HasForeignKey("ProducerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.OwnsOne("Domain.ValueObjects.Address", "FieldAddress", b1 =>
+                    b.OwnsOne("Domain.ValueObjects.Address", "Address", b1 =>
                         {
-                            b1.Property<int>("SubmitionId")
+                            b1.Property<int>("SubmissionId")
                                 .HasColumnType("INTEGER");
 
                             b1.Property<string>("City")
@@ -134,15 +134,15 @@ namespace Infrastructure.Database.Data.Migrations
                                 .IsRequired()
                                 .HasColumnType("TEXT");
 
-                            b1.HasKey("SubmitionId");
+                            b1.HasKey("SubmissionId");
 
-                            b1.ToTable("Submition");
+                            b1.ToTable("Submissions");
 
                             b1.WithOwner()
-                                .HasForeignKey("SubmitionId");
+                                .HasForeignKey("SubmissionId");
                         });
 
-                    b.Navigation("FieldAddress")
+                    b.Navigation("Address")
                         .IsRequired();
 
                     b.Navigation("Producer");
@@ -150,7 +150,7 @@ namespace Infrastructure.Database.Data.Migrations
 
             modelBuilder.Entity("Domain.Aggregates.Producer", b =>
                 {
-                    b.Navigation("Submitions");
+                    b.Navigation("Submissions");
                 });
 #pragma warning restore 612, 618
         }

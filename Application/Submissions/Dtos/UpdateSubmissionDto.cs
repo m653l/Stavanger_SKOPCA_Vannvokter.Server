@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Domain.Aggregates;
 
-namespace Application.Submitions.Dtos
+namespace Application.Submissions.Dtos
 {
     public class UpdateSubmissionDto : SubmissionDto
     {

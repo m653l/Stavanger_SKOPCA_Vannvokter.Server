@@ -8,7 +8,7 @@ namespace Infrastructure.Database.Configurations
     {
         public void Configure(EntityTypeBuilder<Submission> builder)
         {
-            builder.OwnsOne(e => e.FieldAddress);
+            builder.OwnsOne(e => e.Address);
         }
     }
 }

@@ -6,14 +6,13 @@ namespace Infrastructure.Database.Repositories
 {
     internal class ProducersRepository : GenericRepository<Producer>, IProducersRepository
     {
-        public ProducersRepository(DataContext dataContext) : base(dataContext)
-        { }
+        public ProducersRepository(DataContext dataContext) : base(dataContext) { }
 
-        public async Task<int> AddSubmitions(int producerId, Submission submission)
+        public async Task<int> AddSubmissions(int producerId, Submission submission)
         {
             Producer producer = await Get(producerId);
 
-            producer.Submitions.Add(submission);
+            producer.Submissions.Add(submission);
             await Update(producer);
 
             return submission.Id;

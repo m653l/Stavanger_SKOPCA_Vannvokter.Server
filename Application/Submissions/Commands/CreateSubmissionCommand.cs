@@ -6,10 +6,10 @@ using MediatR;
 
 namespace Application.Submissions.Commands
 {
-    public record CreateSubmitionCommand(int producerId, CreateSubmissionDto Submission) : IRequest<int>
+    public record CreateSubmissionCommand(int producerId, CreateSubmissionDto Submission) : IRequest<int>
     { }
 
-    public class CreateSubmissionCommandHandler : IRequestHandler<CreateSubmitionCommand, int>
+    public class CreateSubmissionCommandHandler : IRequestHandler<CreateSubmissionCommand, int>
     {
 
         private readonly IProducersRepository _producersRepository;
@@ -21,9 +21,9 @@ namespace Application.Submissions.Commands
             _mapper = mapper;
         }
 
-        public async Task<int> Handle(CreateSubmitionCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateSubmissionCommand request, CancellationToken cancellationToken)
         {
-            int id = await _producersRepository.AddSubmitions(request.producerId, _mapper.Map<Submission>(request.Submission));
+            int id = await _producersRepository.AddSubmissions(request.producerId, _mapper.Map<Submission>(request.Submission));
 
             return id;
         }

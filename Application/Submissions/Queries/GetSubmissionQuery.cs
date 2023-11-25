@@ -1,10 +1,10 @@
 ﻿using Application.Services.Interfaces;
-using Application.Submitions.Dtos;
+using Application.Submissions.Dtos;
 using AutoMapper;
 using Domain.Aggregates;
 using MediatR;
 
-namespace Application.Submitions.Queries
+namespace Application.Submissions.Queries
 {
     public class GetSubmissionQuery : IRequest<SubmissionDto>
     {
@@ -16,12 +16,12 @@ namespace Application.Submitions.Queries
         }
     }
 
-    public class GetSubmitionQueryHandler : IRequestHandler<GetSubmissionQuery, SubmissionDto>
+    public class GetSubmissionQueryHandler : IRequestHandler<GetSubmissionQuery, SubmissionDto>
     {
         private readonly ISubmissionsRepository _repository;
         private readonly IMapper _mapper;
 
-        public GetSubmitionQueryHandler(ISubmissionsRepository repository, IMapper mapper)
+        public GetSubmissionQueryHandler(ISubmissionsRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

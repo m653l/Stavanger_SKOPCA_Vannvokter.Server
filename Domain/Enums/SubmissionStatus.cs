@@ -1,6 +1,6 @@
 ﻿namespace Domain.Enums
 {
-    public enum SubmitionStatus
+    public enum SubmissionStatus
     {
         Sent,
         WithComments,

@@ -13,12 +13,12 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<Submission> GetSubmissionById(int id)
         {
-            return await _dataContext.Submition.Include(e => e.Producer).FirstOrDefaultAsync(e => e.Id == id) ?? throw new Exception();
+            return await _dataContext.Submissions.Include(e => e.Producer).FirstOrDefaultAsync(e => e.Id == id) ?? throw new Exception();
         }
 
         public async Task<List<Submission>> GetSubmissionsByDate(DateTime fromDate, DateTime untilDate)
         {
-            return await _dataContext.Submition.Where(c => c.SubmitionDate >= fromDate && c.SubmitionDate <= untilDate ).ToListAsync();
+            return await _dataContext.Submissions.Where(c => c.SubmissionDate >= fromDate && c.SubmissionDate <= untilDate ).ToListAsync();
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Infrastructure.Database.Configurations
             builder.HasKey(x => x.Id);
 
             builder.OwnsOne(e => e.FarmAddress);
-            builder.HasMany(e => e.Submitions)
+            builder.HasMany(e => e.Submissions)
                 .WithOne(e => e.Producer)
                 .HasForeignKey(e => e.ProducerId)
                 .IsRequired();
