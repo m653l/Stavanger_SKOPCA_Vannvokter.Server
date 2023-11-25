@@ -16,9 +16,9 @@ namespace Infrastructure.Database.Repositories
             return await _dataContext.Submition.Include(e => e.Producer).FirstOrDefaultAsync(e => e.Id == id) ?? throw new Exception();
         }
 
-        public async Task<List<Submition>> GetSubmitionsByDate()
+        public async Task<List<Submition>> GetSubmitionsByDate(DateTime fromDate, DateTime untilDate)
         {
-            _dataContext.Submition.Where(c => c. );
+            _dataContext.Submition.Where(c => c.SubmitionDate >= fromDate && c.SubmitionDate <= untilDate );
         }
     }
 }
