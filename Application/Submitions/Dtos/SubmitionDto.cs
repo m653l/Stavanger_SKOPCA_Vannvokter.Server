@@ -11,14 +11,11 @@ namespace Application.Submitions.Dtos
         public DateTime LastModifiedDate { get; set; } = DateTime.UtcNow;
         public DateTime DateOfExecution { get; set; } = DateTime.UtcNow;
 
-        public FieldAddressDto FieldAddress { get; set; } = new();
+        public AddressDto FieldAddress { get; set; } = new();
         public string Description { get; set; } = string.Empty;
-        public string Comments { get; set; } = string.Empty;
+        public double Quantity { get; set; }
 
         public SubmitionType SubmitionType { get; set; }
-        public SubmitionStatus SubmitionStatus { get; set; }
-
-
         public Producer Producer { get; set; }
     }
 }
