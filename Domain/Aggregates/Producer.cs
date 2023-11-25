@@ -6,6 +6,8 @@ namespace Domain.Aggregates
 {
     public class Producer : BaseEntity, IAggregateRoot
     {
+        public bool isPies { get; set; } = false;
+
         public string Name { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string FarmName { get; set; } = string.Empty;
