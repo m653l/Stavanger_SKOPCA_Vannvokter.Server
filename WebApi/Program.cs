@@ -24,10 +24,6 @@ namespace WebApi
                 .AddInfrastructure()
                 .AddPresentation();
 
-            builder.Host.UseSerilog((context, configuration) =>
-                configuration.ReadFrom.Configuration(context.Configuration));
-
-
             var app = builder.Build();
 
             app.UseCors(builder => builder
@@ -43,8 +39,6 @@ namespace WebApi
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
-            app.UseSerilogRequestLogging();
 
             app.UseHttpsRedirection();
 
