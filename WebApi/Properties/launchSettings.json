@@ -10,6 +10,16 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://host.docker.internal:25569"
     },
+    "httpLocal": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "http://localhost:25569"
+    },
     "https": {
       "commandName": "Project",
       "launchBrowser": true,
