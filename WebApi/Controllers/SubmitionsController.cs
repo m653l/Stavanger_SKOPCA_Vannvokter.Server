@@ -42,11 +42,10 @@ namespace WebApi.Controllers
             return await Mediator.Send(new GetSubmitionQuery(submitionId));
         }
 
-        [HttpGet(Name ="GetSubmitionByDate")]
+        [HttpGet(Name ="GetSubmissionsByDate")]
         public async Task<ActionResult<List<SubmitionDto>>> GetByDate(DateTime fromDate, DateTime untilDate)
         {
-            //return await Mediator.Send(new GetSubmitionsByDateQuery(fromDate, untilDate));
-            throw new NotImplementedException();
+            return await Mediator.Send(new GetSubmitionsByDateQuery(fromDate, untilDate));
         }
     }
 }
