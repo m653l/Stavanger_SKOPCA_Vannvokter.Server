@@ -14,6 +14,6 @@ namespace Domain.Aggregates
         public Address FarmAddress { get; set; } = new();
 
         [JsonIgnore]
-        public ICollection<Submition> Submitions { get; set; } = new List<Submition>();
+        public ICollection<Submission> Submitions { get; set; } = new List<Submission>();
     }
 }

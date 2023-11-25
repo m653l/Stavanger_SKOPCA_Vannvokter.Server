@@ -8,36 +8,36 @@ namespace Application.Submitions.Queries
 {
     public class GetSubmitionsByDateQuery : IRequest<List<SubmitionDto>>
     {
-        public DateTime? FromDate { get; set; }
-        public DateTime? ToDate { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
         public GetSubmitionsByDateQuery(DateTime? fromDate = null, DateTime? toDate = null)
         {
             if (fromDate != null)
-                FromDate = fromDate;
+                FromDate = fromDate.Value;
             else
                 FromDate = DateTime.MinValue;
 
             if (ToDate != null)
-                ToDate = toDate;
+                ToDate = toDate.Value;
             else
                 ToDate = DateTime.MaxValue;
         }
 
         public class GetSubmitionsByDateQueryHandler : IRequestHandler<GetSubmitionsByDateQuery, List<SubmitionDto>>
         {
-            private readonly ISubmitionsRepository _repository;
+            private readonly ISubmissionsRepository _repository;
             private readonly IMapper _mapper;
-            public GetSubmitionsByDateQueryHandler(ISubmitionsRepository repository, IMapper mapper)
+            public GetSubmitionsByDateQueryHandler(ISubmissionsRepository repository, IMapper mapper)
             {
                 _repository = repository;
                 _mapper = mapper;
             }
-            public Task<List<SubmitionDto>> Handle(GetSubmitionsByDateQuery request, CancellationToken cancellationToken)
+            public async Task<List<SubmitionDto>> Handle(GetSubmitionsByDateQuery request, CancellationToken cancellationToken)
             {
-                List<Submition> submitions = await _repository.GetSubmitionsByDate(request.FromDate, request.ToDate);
+                List<Submission> submitions = await _repository.GetSubmissionsByDate(request.FromDate, request.ToDate);
                 List<SubmitionDto> submitionDtos = new List<SubmitionDto>();
 
-                foreach (Submition submition in submitions)
+                foreach (Submission submition in submitions)
                     submitionDtos.Add(_mapper.Map<SubmitionDto>(submition));
 
                 return submitionDtos;

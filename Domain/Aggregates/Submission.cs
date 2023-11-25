@@ -4,7 +4,7 @@ using Domain.ValueObjects;
 
 namespace Domain.Aggregates
 {
-    public class Submition : BaseEntity
+    public class Submission : BaseEntity
     {
         public DateTime SubmitionDate { get; set; } = DateTime.UtcNow;
         public DateTime LastModifiedDate { get; set; } = DateTime.UtcNow;

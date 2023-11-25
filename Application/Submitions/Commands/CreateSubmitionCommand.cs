@@ -23,7 +23,7 @@ namespace Application.Submitions.Commands
 
         public async Task<int> Handle(CreateSubmitionCommand request, CancellationToken cancellationToken)
         {
-            int id = await _producersRepository.AddSubmitions(request.producerId, _mapper.Map<Submition>(request.Submition));
+            int id = await _producersRepository.AddSubmitions(request.producerId, _mapper.Map<Submission>(request.Submition));
 
             return id;
         }

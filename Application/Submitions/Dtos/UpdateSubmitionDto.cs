@@ -9,8 +9,8 @@ namespace Application.Submitions.Dtos
 
         public new static void Mapping(Profile profile)
         {
-            profile.CreateMap<Submition, UpdateSubmitionDto>()
-                .IncludeBase<Submition, SubmitionDto>()
+            profile.CreateMap<Submission, UpdateSubmitionDto>()
+                .IncludeBase<Submission, SubmitionDto>()
                 .ReverseMap();
         }
     }

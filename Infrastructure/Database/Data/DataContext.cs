@@ -6,15 +6,10 @@ namespace Infrastructure.Database.Data
     public class DataContext : DbContext
     {
         public DbSet<Producer> Producers { get; set; }
-        public DbSet<Submition> Submition { get; set; }
+        public DbSet<Submission> Submition { get; set; }
 
-        public DataContext(DbContextOptions options) : base(options) 
-        { }
-
-        public DataContext()
-        {
-            
-        }
+        public DataContext(DbContextOptions options) : base(options) { }
+        public DataContext() { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

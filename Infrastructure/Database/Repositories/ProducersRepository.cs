@@ -9,14 +9,14 @@ namespace Infrastructure.Database.Repositories
         public ProducersRepository(DataContext dataContext) : base(dataContext)
         { }
 
-        public async Task<int> AddSubmitions(int producerId, Submition submition)
+        public async Task<int> AddSubmitions(int producerId, Submission submission)
         {
             Producer producer = await Get(producerId);
 
-            producer.Submitions.Add(submition);
+            producer.Submitions.Add(submission);
             await Update(producer);
 
-            return submition.Id;
+            return submission.Id;
         }
     }
 }

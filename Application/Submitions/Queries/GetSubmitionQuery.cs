@@ -18,10 +18,10 @@ namespace Application.Submitions.Queries
 
     public class GetSubmitionQueryHandler : IRequestHandler<GetSubmitionQuery, SubmitionDto>
     {
-        private readonly ISubmitionsRepository _repository;
+        private readonly ISubmissionsRepository _repository;
         private readonly IMapper _mapper;
 
-        public GetSubmitionQueryHandler(ISubmitionsRepository repository, IMapper mapper)
+        public GetSubmitionQueryHandler(ISubmissionsRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;
@@ -29,8 +29,8 @@ namespace Application.Submitions.Queries
 
         public async Task<SubmitionDto> Handle(GetSubmitionQuery request, CancellationToken cancellationToken)
         {
-            Submition submition = await _repository.GetSubmitionById(request.Id);
-            SubmitionDto submitionDto = _mapper.Map<SubmitionDto>(submition);
+            Submission submission = await _repository.GetSubmissionById(request.Id);
+            SubmitionDto submitionDto = _mapper.Map<SubmitionDto>(submission);
 
             return submitionDto;
         }
