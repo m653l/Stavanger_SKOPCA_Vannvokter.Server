@@ -362,3 +362,5 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /WebApi/VannvokterDB.db
+/WebApi/VannvokterDB.db-shm
+/WebApi/VannvokterDB.db-wal
