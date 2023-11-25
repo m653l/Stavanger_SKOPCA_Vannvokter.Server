@@ -23,15 +23,12 @@ namespace Application.Producers.Commands
 
         public async Task<int> Handle(UpdateProducerCommand request, CancellationToken cancellationToken)
         {
-            Producer entity = _mapper.Map<Producer>(request.Producer);
-
             Producer currentEntity = await _repository.Get(request.Producer.Id);
-
             Producer updatedEntity = _mapper.Map(request.Producer, currentEntity);
 
             await _repository.Update(updatedEntity);
 
-            return entity.Id;
+            return updatedEntity.Id;
         }
     }
 }

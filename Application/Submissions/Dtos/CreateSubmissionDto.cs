@@ -16,6 +16,5 @@ namespace Application.Submissions.Dtos
         public string Comments { get; set; } = string.Empty;
 
         public SubmissionType SubmissionType { get; set; }
-        public SubmissionStatus SubmissionStatus { get; set; }
     }
 }
