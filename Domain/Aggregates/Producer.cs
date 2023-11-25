@@ -1,5 +1,6 @@
 ﻿using Domain.Common;
 using Domain.ValueObjects;
+using System.Text.Json.Serialization;
 
 namespace Domain.Aggregates
 {
@@ -9,5 +10,8 @@ namespace Domain.Aggregates
         public string LastName { get; set; } = string.Empty;
         public string FarmName { get; set; } = string.Empty;
         public Address FarmAddress { get; set; } = new();
+
+        [JsonIgnore]
+        public ICollection<Submition> Submitions { get; set; } = new List<Submition>();
     }
 }

@@ -29,11 +29,7 @@ namespace Application.Producers.Queries
 
         public async Task<ProducerDto> Handle(GetProducerQuery request, CancellationToken cancellationToken)
         {
-            Producer? producer = await _repository.Get(request.Id);
-
-            if (producer is null)
-                throw new Exception();
-
+            Producer producer = await _repository.Get(request.Id);
             ProducerDto producerDto = _mapper.Map<ProducerDto>(producer);
 
             return producerDto;

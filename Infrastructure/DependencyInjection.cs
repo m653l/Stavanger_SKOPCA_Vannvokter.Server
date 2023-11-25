@@ -23,6 +23,9 @@ namespace Infrastructure
             }
 
             services.AddTransient<IGenericRepository<Producer>, GenericRepository<Producer>>();
+            services.AddTransient<IGenericRepository<Submition>, GenericRepository<Submition>>();
+            services.AddTransient<IProducersRepository, ProducersRepository>();
+            services.AddTransient<ISubmitionsRepository, SubmitionsRepository>();
 
             return services;
         }
