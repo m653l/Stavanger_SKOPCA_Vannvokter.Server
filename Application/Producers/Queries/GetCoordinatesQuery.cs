@@ -1,0 +1,24 @@
+﻿using Application.Dtos;
+using Application.Services.Interfaces;
+using MediatR;
+
+namespace Application.Producers.Queries
+{
+    public record GetCoordinatesQuery(PlaceDto Place) : IRequest<CoordinatesDto>
+    { }
+
+    public class GetCoordinatesCommandHandler : IRequestHandler<GetCoordinatesQuery, CoordinatesDto>
+    {
+        private readonly IGeolocationService _geolocationService;
+
+        public GetCoordinatesCommandHandler(IGeolocationService geolocationService)
+        {
+            _geolocationService = geolocationService;
+        }
+
+        public async Task<CoordinatesDto> Handle(GetCoordinatesQuery request, CancellationToken cancellationToken)
+        {
+            return await _geolocationService.GetCoordinate(request.Place);
+        }
+    }
+}

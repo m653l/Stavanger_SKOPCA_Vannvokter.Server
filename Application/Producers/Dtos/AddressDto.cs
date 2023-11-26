@@ -8,5 +8,10 @@ namespace Application.Producers.Dtos
         public string Street { get; set; } = string.Empty;
         public string City { get; set; } = string.Empty;
         public string PostCode { get; set; } = string.Empty;
+
+        public string GetAddressInOneString()
+        {
+            return string.Join(" ", Street, City, PostCode);
+        }
     }
 }

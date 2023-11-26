@@ -1,4 +1,5 @@
-﻿using Application.Producers.Commands;
+﻿using Application.Dtos;
+using Application.Producers.Commands;
 using Application.Producers.Dtos;
 using Application.Producers.Queries;
 using MediatR;
@@ -50,6 +51,26 @@ namespace WebApi.Controllers
         {
             await Mediator.Send(new DeleteProducerCommand(producerId));
             return Ok();
+        }
+
+        [HttpGet(Name = "GetPlaces")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(PlaceDto[]))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<PlaceDto[]>> GetPlaces([FromQuery] GetPlacesQuery command)
+        {
+            return await Mediator.Send(command);
+        }
+
+        [HttpGet(Name = "GetCoordinates")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CoordinatesDto))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<CoordinatesDto>> GetCoordinates([FromQuery] GetCoordinatesQuery command)
+        {
+            return await Mediator.Send(command);
         }
     }
 }
