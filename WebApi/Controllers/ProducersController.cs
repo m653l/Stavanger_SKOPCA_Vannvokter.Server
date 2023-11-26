@@ -35,6 +35,7 @@ namespace WebApi.Controllers
         [HttpGet("{producerId}", Name = "GetProducerById")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ProducerDto))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<ProducerDto>> GetById([Required] int producerId)
         {

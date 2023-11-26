@@ -1,4 +1,5 @@
-﻿using Application.Services.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Services.Interfaces;
 using Domain.Aggregates;
 using Domain.Enums;
 using Infrastructure.Database.Data;
@@ -14,12 +15,12 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<Submission> GetSubmissionById(int id)
         {
-            return await _dataContext.Submissions.Include(e => e.Producer).FirstOrDefaultAsync(e => e.Id == id) ?? throw new Exception();
+            return await _dataContext.Submissions.Include(e => e.Producer).FirstOrDefaultAsync(e => e.Id == id) ?? throw new NotFoundException(typeof(Submission), id);
         }
 
         public async Task<List<Submission>> GetAllSubmissions()
         {
-            return await _dataContext.Submissions.Include(e => e.Producer).ToListAsync() ?? throw new Exception();
+            return await _dataContext.Submissions.Include(e => e.Producer).ToListAsync() ?? throw new NotFoundException();
         }
 
         public async Task<List<Submission>> GetSubmissionsByDate(DateTime fromDate, DateTime untilDate)
@@ -29,7 +30,7 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<List<Submission>> GetSubmissionsByType(SubmissionType submissionType)
         {
-            return await _dataContext.Submissions.Include(e => e.Producer).Where(e => e.SubmissionType == submissionType).ToListAsync() ?? throw new Exception();
+            return await _dataContext.Submissions.Include(e => e.Producer).Where(e => e.SubmissionType == submissionType).ToListAsync() ?? throw new NotFoundException(typeof(List<Submission>), submissionType);
         }
     }
 }

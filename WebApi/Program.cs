@@ -1,6 +1,7 @@
 using Application;
 using Infrastructure;
 using Serilog;  // TODO: Configure Serilog
+using WebApi.Filters;
 
 namespace WebApi
 {
@@ -14,7 +15,7 @@ namespace WebApi
 
             // Add services to the container.
 
-            builder.Services.AddControllers().AddJsonOptions(opt =>
+            builder.Services.AddControllers(opt => opt.Filters.Add<ApiExceptionFilterAttribute>()).AddJsonOptions(opt =>
             {
                 opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
                 opt.JsonSerializerOptions.WriteIndented = true;

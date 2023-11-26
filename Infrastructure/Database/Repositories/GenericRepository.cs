@@ -1,4 +1,5 @@
-﻿using Application.Services.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Services.Interfaces;
 using Domain.Common;
 using Infrastructure.Database.Data;
 
@@ -33,7 +34,7 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<T> Get(int id)
         {
-            return await _dataContext.Set<T>().FindAsync(id) ?? throw new Exception();
+            return await _dataContext.Set<T>().FindAsync(id) ?? throw new NotFoundException(typeof(T), id);
         }
 
         public IQueryable<T> GetAll()
