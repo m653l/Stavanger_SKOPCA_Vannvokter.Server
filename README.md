@@ -9,6 +9,7 @@ This project is an ASP.NET Web API built using Clean Architecture and Domain-Dri
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
+- [Hosting](#hosting)
 
 ## Architecture Overview
 This project follows the principles of Clean Architecture and Domain-Driven Design. The codebase is organized into layers, each with a specific responsibility:
@@ -29,3 +30,6 @@ Navigate to the project directory and run the following command to restore the d
 ## Running the Application
 The API will be accessible at [http://localhost:25569](http://localhost:25569) by default. Run the following command to start the API:
 ``` dotnet run --project WebApi/WebApi.csproj --launch-profile httpLocal ```
+
+## Hosting
+The API is hosted on [130.162.252.108:25569/api](130.162.252.108:25569/api). Swagger can be accessed at [http://130.162.252.108:25569/swagger/index.html](http://130.162.252.108:25569/swagger/index.html)
