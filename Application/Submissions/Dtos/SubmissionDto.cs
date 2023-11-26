@@ -11,7 +11,7 @@ namespace Application.Submissions.Dtos
         public DateTime LastModifiedDate { get; set; } = DateTime.UtcNow;
         public DateTime DateOfExecution { get; set; } = DateTime.UtcNow;
 
-        public AddressDto FieldAddress { get; set; } = new();
+        public AddressDto Address { get; set; } = new();
         public double Quantity { get; set; }
 
         public SubmissionType SubmissionType { get; set; }
