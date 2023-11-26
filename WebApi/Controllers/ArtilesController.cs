@@ -56,7 +56,7 @@ namespace WebApi.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ArticleDto>))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult<List<ArticleDto>>> GetById()
+        public async Task<ActionResult<List<ArticleDto>>> GetAllById()
         {
             return await Mediator.Send(new GetAllArticlesQuery());
         }
