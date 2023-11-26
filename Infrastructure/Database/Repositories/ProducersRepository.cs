@@ -1,4 +1,5 @@
-﻿using Application.Services.Interfaces;
+﻿using Application.Common.Exceptions;
+using Application.Services.Interfaces;
 using Domain.Aggregates;
 using Infrastructure.Database.Data;
 
@@ -10,7 +11,7 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<int> AddSubmissions(int producerId, Submission submission)
         {
-            Producer producer = await Get(producerId);
+            Producer producer = await Get(producerId) ?? throw new NotFoundException(typeof(Producer), producerId);
 
             producer.Submissions.Add(submission);
             await Update(producer);

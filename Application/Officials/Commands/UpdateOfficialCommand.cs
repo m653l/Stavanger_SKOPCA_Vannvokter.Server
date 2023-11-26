@@ -1,4 +1,5 @@
-﻿using Application.Officials.Dtos;
+﻿using Application.Common.Exceptions;
+using Application.Officials.Dtos;
 using Application.Services.Interfaces;
 using AutoMapper;
 using Domain.Aggregates;
@@ -23,7 +24,7 @@ namespace Application.Officials.Commands
 
         public async Task<int> Handle(UpdateOfficialCommand request, CancellationToken cancellationToken)
         {
-            Official currentEntity = await _repository.Get(request.Official.Id);
+            Official currentEntity = await _repository.Get(request.Official.Id) ?? throw new NotFoundException(typeof(Official), request.Official.Id);
             Official updatedEntity = _mapper.Map(request.Official, currentEntity);
 
             await _repository.Update(updatedEntity);

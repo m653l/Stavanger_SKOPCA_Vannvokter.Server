@@ -1,4 +1,5 @@
-﻿using Application.Producers.Dtos;
+﻿using Application.Common.Exceptions;
+using Application.Producers.Dtos;
 using Application.Services.Interfaces;
 using AutoMapper;
 using Domain.Aggregates;
@@ -23,7 +24,7 @@ namespace Application.Producers.Commands
 
         public async Task<int> Handle(UpdateProducerCommand request, CancellationToken cancellationToken)
         {
-            Producer currentEntity = await _repository.Get(request.Producer.Id);
+            Producer currentEntity = await _repository.Get(request.Producer.Id) ?? throw new NotFoundException(typeof(Producer), request.Producer.Id); ;
             Producer updatedEntity = _mapper.Map(request.Producer, currentEntity);
 
             await _repository.Update(updatedEntity);
