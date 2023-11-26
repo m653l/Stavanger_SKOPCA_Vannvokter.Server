@@ -2,6 +2,7 @@
 using Application.Officials.Dtos;
 using Application.Officials.Queries;
 using Application.Submissions.Dtos;
+using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -49,6 +50,15 @@ namespace WebApi.Controllers
         public async Task<ActionResult<List<SubmissionDto>>> GetAllSubmissions()
         {
             return await Mediator.Send(new GetAllSubmissionsQuery());
+        }
+
+        [HttpGet(Name = "GetSubmissionsByType")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<SubmissionDto>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<SubmissionDto>>> GetSubmissionsByType([Required] SubmissionType submissionType)
+        {
+            return await Mediator.Send(new GetSubmissionsByType(submissionType));
         }
     }
 }

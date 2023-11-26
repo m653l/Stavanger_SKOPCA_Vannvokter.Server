@@ -1,4 +1,5 @@
 ﻿using Domain.Aggregates;
+using Domain.Enums;
 
 namespace Application.Services.Interfaces
 {
@@ -6,6 +7,7 @@ namespace Application.Services.Interfaces
     {
         public Task<Submission> GetSubmissionById(int id);
         public Task<List<Submission>> GetAllSubmissions();
+        public Task<List<Submission>> GetSubmissionsByType(SubmissionType submissionType);
         public Task<List<Submission>> GetSubmissionsByDate(DateTime fromDate, DateTime untilDate);
     }
 }

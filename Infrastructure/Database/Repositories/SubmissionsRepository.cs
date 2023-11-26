@@ -1,5 +1,6 @@
 ﻿using Application.Services.Interfaces;
 using Domain.Aggregates;
+using Domain.Enums;
 using Infrastructure.Database.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,6 +25,11 @@ namespace Infrastructure.Database.Repositories
         public async Task<List<Submission>> GetSubmissionsByDate(DateTime fromDate, DateTime untilDate)
         {
             return await _dataContext.Submissions.Where(c => c.SubmissionDate >= fromDate && c.SubmissionDate <= untilDate ).ToListAsync();
+        }
+
+        public async Task<List<Submission>> GetSubmissionsByType(SubmissionType submissionType)
+        {
+            return await _dataContext.Submissions.Include(e => e.Producer).Where(e => e.SubmissionType == submissionType).ToListAsync() ?? throw new Exception();
         }
     }
 }
