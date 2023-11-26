@@ -1,10 +1,11 @@
 ﻿using Application.Dtos;
+using Application.Producers.Dtos;
 using Application.Services.Interfaces;
 using MediatR;
 
 namespace Application.Producers.Queries
 {
-    public record GetCoordinatesQuery(PlaceDto Place) : IRequest<CoordinatesDto>
+    public record GetCoordinatesQuery(AddressDto Address) : IRequest<CoordinatesDto>
     { }
 
     public class GetCoordinatesCommandHandler : IRequestHandler<GetCoordinatesQuery, CoordinatesDto>
@@ -18,7 +19,9 @@ namespace Application.Producers.Queries
 
         public async Task<CoordinatesDto> Handle(GetCoordinatesQuery request, CancellationToken cancellationToken)
         {
-            return await _geolocationService.GetCoordinate(request.Place);
+            PlaceDto[] places = await _geolocationService.GetPlaces(request.Address);
+
+            return await _geolocationService.GetCoordinate(places[0]);
         }
     }
 }
