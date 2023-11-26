@@ -12,8 +12,7 @@ namespace Application.Submissions.Dtos
         public DateTime DateOfExecution { get; set; } = DateTime.UtcNow;
 
         public AddressDto Address { get; set; } = new();
-        public string Description { get; set; } = string.Empty;
-        public string Comments { get; set; } = string.Empty;
+        public double Quantity { get; set; }
 
         public SubmissionType SubmissionType { get; set; }
     }

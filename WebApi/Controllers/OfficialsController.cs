@@ -1,7 +1,7 @@
 ﻿using Application.Officials.Commands;
 using Application.Officials.Dtos;
 using Application.Officials.Queries;
-using Application.Producers.Commands;
+using Application.Submissions.Dtos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -40,6 +40,15 @@ namespace WebApi.Controllers
         public async Task<ActionResult<int>> Update(UpdateOfficialCommand command)
         {
             return await Mediator.Send(command);
+        }
+
+        [HttpGet(Name = "GetAllSubmissions")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<SubmissionDto>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<SubmissionDto>>> GetAllSubmissions()
+        {
+            return await Mediator.Send(new GetAllSubmissionsQuery());
         }
     }
 }
