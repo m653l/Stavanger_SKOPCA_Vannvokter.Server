@@ -50,5 +50,15 @@ namespace WebApi.Controllers
             await Mediator.Send(new DeleteArticleCommand(articleId));
             return Ok();
         }
+
+
+        [HttpGet(Name = "GetAllArticlesById")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<ArticleDto>))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult<List<ArticleDto>>> GetById()
+        {
+            return await Mediator.Send(new GetAllArticlesQuery());
+        }
     }
 }
