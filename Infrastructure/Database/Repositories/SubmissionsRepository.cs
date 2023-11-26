@@ -25,7 +25,7 @@ namespace Infrastructure.Database.Repositories
 
         public async Task<List<Submission>> GetSubmissionsByDate(DateTime fromDate, DateTime untilDate)
         {
-            return await _dataContext.Submissions.Where(c => c.SubmissionDate >= fromDate && c.SubmissionDate <= untilDate ).ToListAsync();
+            return await _dataContext.Submissions.Include(e => e.Producer).Where(c => c.SubmissionDate >= fromDate && c.SubmissionDate <= untilDate ).ToListAsync();
         }
 
         public async Task<List<Submission>> GetSubmissionsByType(SubmissionType submissionType)
