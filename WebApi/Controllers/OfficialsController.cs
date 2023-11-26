@@ -60,5 +60,15 @@ namespace WebApi.Controllers
         {
             return await Mediator.Send(new GetSubmissionsByType(submissionType));
         }
+
+        [HttpDelete("{officialId}", Name = "DeleteOfficialById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> DeleteById([Required] int officialId)
+        {
+            await Mediator.Send(new DeleteOfficialCommand(officialId));
+            return Ok();
+        }
     }
 }

@@ -47,5 +47,15 @@ namespace WebApi.Controllers
         {
             return await Mediator.Send(new GetSubmissionsByDateQuery(fromDate, untilDate));
         }
+
+        [HttpDelete("{submissionId}", Name = "DeleteSubmissionById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> DeleteById([Required] int submissionId)
+        {
+            await Mediator.Send(new DeleteSubmissionCommand(submissionId));
+            return Ok();
+        }
     }
 }

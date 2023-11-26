@@ -41,5 +41,15 @@ namespace WebApi.Controllers
         {
             return await Mediator.Send(new GetProducerQuery(producerId));
         }
+
+        [HttpDelete("{producerId}", Name = "DeleteProducerById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+        public async Task<ActionResult> DeleteById([Required] int producerId)
+        {
+            await Mediator.Send(new DeleteProducerCommand(producerId));
+            return Ok();
+        }
     }
 }
